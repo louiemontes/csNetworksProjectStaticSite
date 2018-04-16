@@ -203,11 +203,18 @@
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
 								<h1 class="mb-10" id="approach">Approach</h1>
-								<p>Boys will be boys.</p>
+								<br/>
+								<h6>Technical Description</h6>
+								<p>For our research, we needed to first scrape the website boardgamegeek.com for data.  We did this using Node.js and the boardgamegeek.com XML API that was wrapped in a Node.js module called “bgg” to return JSON after search queries that we could control on our server.  First, we searched for the Hot 50 games’ IDs and stored them.  Then, we searched for complete information of those IDs and stored board game JavaScript objects with the properties of identification, title, a mechanics tags array, and a category tags array.  Finally, we printed those objects and made a raw text file to which our iPythonNotebook would interpret.  To the Python notebook, our network model is 50 graphs that are simply all of the category and mechanic tags per game listed as nodes and connected to a single title node that is the name of one of the 50 games.  We use the text sheet result of our Node.js scraping tool to determine most categorically and mechanically similar games based on an input game with its associated category and mechanic tags too.  The graphs are like detailed sets in our uses, as in the title node is just to detail what boardgame a graph belongs too, while the appendage nodes are only neighbors to that central node if they represent a tag that the represented board game has from the data.
+								</p>
+								<p>
+								In Python, we decided to analyze board games based on two metrics: category (theme), and mechanics. By using the JSI, we can determine the list of board games that are a subset of the The Hottest top 50 board games on boardgamegeek.com that are most similar to a user input based on category tags and mechanics tags.  We are currently finishing our conclusions as to what similar games should be return per out input of “Dice City”, “Dominion”, and “Imperial Assault”.
+								</p>
 							</div>
 						</div>
 					</div>
-					<div class="row">
+
+					<!-- <div class="row">
 						<div class="col-lg-6 secvice-left">
 							<div class="single-service d-flex flex-row pb-30">
 								<div class="icon">
@@ -276,7 +283,7 @@
 										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
 									</p>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -292,7 +299,33 @@
 						<div class="menu-content col-lg-9">
 							<div class="title text-center">
 								<h1 class="mb-10 text-white"  id="results">Results</h1>
-								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+								<h6 class="text-white">Visualization of the Network Model Used</h6>
+								<p class="text-white">
+							    Each graph displayed is a particular game.  The red node represents the game’s title, the blue nodes represent the game’s associated categories, and the green nodes represent the game’s associated mechanics.  The edges on the graphs represent a possessive association of a particular game with tags, that is, the title node that is made neighbors through edges with outer tag nodes means the game identified by that title node has those neighbor tags listed in its metadata.
+								</p>
+								<h6 class="text-white">
+									Jupyter notebook and Docker information
+								</h6>
+								<p class="text-white">
+									We used a shared Jupyter notebook for the JSI calculation and it is located on Github at this link:
+        <br/><a href="https://github.com/louiemontes/csNetworksProjectPythonPart" target="_blank">https://github.com/louiemontes/csNetworksProjectPythonPart</a><br/>
+
+    		For this project, each of our members used jupyter notebook to test small portions of the website functionality. We then pushed functional code to the main jupyter notebook which we had hosted on our main project github. For the Javascript portion of our project we wrote and compiled on our personal machines using terminal and vim.
+								</p>
+								<h6 class="text-white">
+									Access to and Description of Data Used for the Project
+								</h6>
+								<p class="text-white">
+									The data is found in two text files located on the Github link:
+        <br/><a href="https://github.com/louiemontes/csNetworksProjectPythonPart" target="_blank">https://github.com/louiemontes/csNetworksProjectPythonPart</a><br/><br/>
+
+    The data file for scraped data from boardgamegeek.com is found on the text file named: cleanData.txt.  The data is organized in the format of game objects described every four lines. The first line in a block is the game identification number, the second line is the game title, the third line is mechanics tags in an array, and the fourth line is the category tags in an array.
+    The data file for the user input example data is found the text file named: inputData.txt.  The fields are formatted the exact same way as pulled in the scraper output of cleanData.txt.
+
+
+								</p>
+
+
 							</div>
 						</div>
 					</div>
@@ -301,26 +334,6 @@
 			<!-- End calto-action Area -->
 
 
-			<!-- Start home-video Area -->
-			<section class="home-video-area">
-				<div class="container-fluid">
-					<div class="row justify-content-end align-items-center">
-						<div class="col-lg-4 no-padding video-right">
-							<p class="top-title">Tutorial for beginner</p>
-							<h1>We did this<br></h1>
-							<p><span>We are here to listen from you deliver exellence</span></p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.
-							</p>
-						</div>
-						<section class="video-area col-lg-6">
-							<div class="overlay overlay-bg"></div>
-							<div class="container">
-						</section>
-					</div>
-				</div>
-			</section>
-			<!-- End home-aboutus Area -->
 
 
 			<!-- Start home-aboutus Area -->
@@ -329,14 +342,51 @@
 					<div class="row justify-content-center align-items-center">
 						<div class="col-lg-8 no-padding about-left relative">
 							<div class="overlay overlay-bg"></div>
-							<img class="img-fluid" src="img/f2.jpg" alt="">
+							<img class="img-fluid" src="img/1.png" alt="">
 						</div>
 						<div class="col-lg-4 no-padding about-right">
-							<p class="top-title">24/7 Support system</p>
-							<h1>And this<br></h1>
-							<p><span>We are here to listen from you deliver exellence</span></p>
+							<p class="top-title">Dice City</p>
+							<h1>Example 1<br></h1>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.
+								At our current stage in development, we are able to plot and color-code graphs of individual games, get tag types, and make graph objects that represent the board games meta data. This example is for the game "Dice City."
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="home-aboutus-area">
+				<div class="container-fluid">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-8 no-padding about-left relative">
+							<div class="overlay overlay-bg"></div>
+							<img class="img-fluid" src="img/2.png" alt="">
+						</div>
+						<div class="col-lg-4 no-padding about-right">
+							<p class="top-title">Dominion</p>
+							<h1>Example 2<br></h1>
+							<p>
+								As you can see in our graph for "Dominion", it has the categories "card game" and a few mechanics labeled in green.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="home-aboutus-area">
+				<div class="container-fluid">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-8 no-padding about-left relative">
+							<div class="overlay overlay-bg"></div>
+							<img class="img-fluid" src="img/3.png" alt="">
+						</div>
+						<div class="col-lg-4 no-padding about-right">
+							<p class="top-title">Star Wars: Imperial Assault</p>
+							<h1>Example 3<br></h1>
+							<p>
+								Our example for "Star Wars: Imperial Assault" shows more varied game attributes to be compared.
 							</p>
 						</div>
 					</div>
